@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::PT::Ords2Nums.
 
+0.02  Wed May  10 15:08:12 2004
+	- working up to 999.999.999.999
+
 0.01  Wed May  5 20:46:12 2004
 	- first release ready; works up to 199; needs more tests
 
