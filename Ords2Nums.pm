@@ -20,7 +20,7 @@ our @EXPORT = qw(
 	ord2num isord
 );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my %values;
 
