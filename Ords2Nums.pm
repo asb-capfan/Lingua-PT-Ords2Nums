@@ -11,16 +11,15 @@ require Exporter;
 our @ISA = qw(Exporter);
 
 our %EXPORT_TAGS = ( 'all' => [ qw(
-	ord2num isord
+	ord2num
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(
-	ord2num isord
 );
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 my %values;
 
@@ -30,9 +29,16 @@ Lingua::PT::Ords2Nums - Converts Portuguese ordinals to numbers
 
 =head1 SYNOPSIS
 
-  use Lingua::PT::Ords2Nums;
+  use Lingua::PT::Ords2Nums qw/ord2num/;
 
   $num = word2num('décimo primeiro')   # 11
+
+=head1 DESCRIPTION
+
+Converts Portuguese ordinals to numbers. Works up to 999.999.999.999
+('novecentos e noventa e nove bilionésimos novecentos e noventa e nove
+milionésimos novecentos e noventa e nove milésimos nongentésimo nonagésimo
+nono').
 
 =cut
 
@@ -75,6 +81,15 @@ BEGIN {
   );
 }
 
+=head2 ord2num
+
+Turns an ordinal number into a regular number (decimal).
+
+  $num = word2num('segundo')
+  # $num now holds 2
+
+=cut
+
 sub ord2num {
   $_ = shift || return undef;
   my $result = 0;
@@ -90,41 +105,35 @@ sub ord2num {
   $result;
 }
 
-sub isord { return 1 }
-
 1;
 __END__
-
-=head1 DESCRIPTION
-
-Converts Portuguese ordinals to numbers. Works up to 999.999.999.999
-('novecentos e noventa e nove bilionésimos novecentos e noventa e nove
-milionésimos novecentos e noventa e nove milésimos nongentésimo nonagésimo
-nono').
 
 =head1 DEPENDENCIES
 
 Lingua::PT::Words2Nums
 
+=head1 TO DO
+
+=over 6
+
+=item * Implement function isord()
+
+=back
+
 =head1 SEE ALSO
 
-Lingua::PT::Nums2Ords
-
-=head1 MESSAGE FROM THE AUTHOR
-
-If you're using this module, please drop me a line to my e-mail. Tell
-me what you're doing with it. Also, feel free to suggest new
-bugs^H^H^H^H^H features.
+More tools for the Portuguese language processing can be found at the
+Natura project: http://natura.di.uminho.pt
 
 =head1 AUTHOR
 
-Jose Alves de Castro, E<lt>cog [at] cpan [dot] org<gt>
+Jose Castro, C<< <cog@cpan.org> >>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT & LICENSE
 
-Copyright 2004 by Jose Alves de Castro
+Copyright 2004 Jose Castro, All Rights Reserved.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself. 
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
