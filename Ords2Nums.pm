@@ -20,7 +20,7 @@ our @EXPORT = qw(
 	ord2num isord
 );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 my %values;
 
@@ -110,9 +110,15 @@ Lingua::PT::Words2Nums
 
 Lingua::PT::Nums2Ords
 
+=head1 MESSAGE FROM THE AUTHOR
+
+If you're using this module, please drop me a line to my e-mail. Tell
+me what you're doing with it. Also, feel free to suggest new
+bugs^H^H^H^H^H features.
+
 =head1 AUTHOR
 
-Jose Alves de Castro, E<lt>jac@localdomainE<gt>
+Jose Alves de Castro, E<lt>cog [at] cpan [dot] org<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
