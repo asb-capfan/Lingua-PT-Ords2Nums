@@ -159,7 +159,7 @@ Lingua::PT::Words2Nums
 =head1 SEE ALSO
 
 More tools for the Portuguese language processing can be found at the
-Natura project: http://natura.di.uminho.pt
+Natura project: L<http://natura.di.uminho.pt>
 
 =head1 AUTHOR
 
