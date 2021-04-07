@@ -25,6 +25,8 @@ my %values;
 
 =head1 NAME
 
+=encoding latin1
+
 Lingua::PT::Ords2Nums - Converts Portuguese ordinals to numbers
 
 =head1 SYNOPSIS
