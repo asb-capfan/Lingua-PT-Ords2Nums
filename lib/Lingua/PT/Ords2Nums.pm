@@ -21,31 +21,7 @@ our @EXPORT = qw(
 
 our $VERSION = '0.07';
 
-my %values;
-
-=head1 NAME
-
-=encoding latin1
-
-Lingua::PT::Ords2Nums - Converts Portuguese ordinals to numbers
-
-=head1 SYNOPSIS
-
-  use Lingua::PT::Ords2Nums qw/ord2num/;
-
-  $num = word2num('décimo primeiro')   # 11
-
-=head1 DESCRIPTION
-
-Converts Portuguese ordinals to numbers. Works up to 999.999.999.999
-('novecentos e noventa e nove bilionésimos novecentos e noventa e nove
-milionésimos novecentos e noventa e nove milésimos nongentésimo nonagésimo
-nono').
-
-=cut
-
-BEGIN {
-  %values = (
+my %values = (
     'bilionésimo'	=> 1000000000,
     'milionésimo'	=> 1000000,
     'milésimo'		=> 1000,
@@ -79,9 +55,67 @@ BEGIN {
     terceiro		=> 3,
     segundo		=> 2,
     primeiro		=> 1,
+);
 
-  );
-}
+# Order of application is important, but hashes are unsorted.
+# So we need to store the order of the keys in an array.
+my @key_sorted_order = (
+    'bilionésimo',#	=> 1000000000,
+    'milionésimo',#	=> 1000000,
+    'milésimo',#		=> 1000,
+
+    'nongentésimo',#	=> 900,
+    'octigentésimo',#	=> 800,
+    'septigentésimo',#	=> 700,
+    'seiscentésimo',#	=> 600,
+    'quingentésimo',#	=> 500,
+    'quadrigentésimo',#	=> 400,
+    'tricentésimo',#	=> 300,
+    'ducentésimo',#	=> 200,
+    'centésimo',# 	=> 100,
+
+    'nonagésimo',#	=> 90,
+    'octogésimo',# 	=> 80,
+    'septuagésimo',# 	=> 70,
+    'sexagésimo',# 	=> 60,
+    'quinquagésimo',# 	=> 50,
+    'quadragésimo',# 	=> 40,
+    'trigésimo',# 	=> 30,
+    'vigésimo',# 		=> 20,
+    'décimo',# 		=> 10,
+
+    'nono',#		=> 9,
+    'oitavo',#		=> 8,
+    'sétimo',#		=> 7,
+    'sexto',#		=> 6,
+    'quinto',#		=> 5,
+    'quarto',#		=> 4,
+    'terceiro',#		=> 3,
+    'segundo',#		=> 2,
+    'primeiro',#		=> 1,
+);
+
+
+=head1 NAME
+
+=encoding latin1
+
+Lingua::PT::Ords2Nums - Converts Portuguese ordinals to numbers
+
+=head1 SYNOPSIS
+
+  use Lingua::PT::Ords2Nums qw/ord2num/;
+
+  $num = word2num('décimo primeiro')   # 11
+
+=head1 DESCRIPTION
+
+Converts Portuguese ordinals to numbers. Works up to 999.999.999.999
+('novecentos e noventa e nove bilionésimos novecentos e noventa e nove
+milionésimos novecentos e noventa e nove milésimos nongentésimo nonagésimo
+nono').
+
+=cut
 
 =head2 ord2num
 
@@ -100,7 +134,7 @@ sub ord2num {
   s/(.*)milionésimos/$result += (word2num($1) * 1000000)/e;
   s/(.*)milésimos/$result += (word2num($1) * 1000)/e;
 
-  for my $value (keys %values) {
+  for my $value ( @key_sorted_order ) {
     s/$value/$result += $values{$value}/e;
   }
 
