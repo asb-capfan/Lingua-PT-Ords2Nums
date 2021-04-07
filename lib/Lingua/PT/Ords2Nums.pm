@@ -46,15 +46,15 @@ my %values = (
     'vigésimo' 		=> 20,
     'décimo' 		=> 10,
 
-    nono		=> 9,
-    oitavo		=> 8,
+    'nono'		=> 9,
+    'oitavo'		=> 8,
     'sétimo'		=> 7,
-    sexto		=> 6,
-    quinto		=> 5,
-    quarto		=> 4,
-    terceiro		=> 3,
-    segundo		=> 2,
-    primeiro		=> 1,
+    'sexto'		=> 6,
+    'quinto'		=> 5,
+    'quarto'		=> 4,
+    'terceiro'		=> 3,
+    'segundo'		=> 2,
+    'primeiro'		=> 1,
 );
 
 # Order of application is important, but hashes are unsorted.
