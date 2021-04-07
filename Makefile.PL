@@ -6,6 +6,5 @@ WriteMakefile(
     'NAME'		=> 'Lingua::PT::Ords2Nums',
     'VERSION_FROM'	=> 'lib/Lingua/PT/Ords2Nums.pm', # finds $VERSION
     'PREREQ_PM'		=> {'Lingua::PT::Words2Nums' => 0.01}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
-      (AUTHOR     => 'Jose Alves de Castro <cog@cpan.org>') : ()),
+    'AUTHOR'   => 'Jose Alves de Castro <cog@cpan.org>',
 );
